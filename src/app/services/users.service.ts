@@ -10,7 +10,7 @@ export class UsersService {
     return this.http.get(baseUrl+'get/');
   }
   get(id:any) {
-    return this.http.get(`${baseUrl}/${id}`);
+    return this.http.get(`${baseUrl}${id}`);
   }
   create(data:any) {
     return this.http.post(baseUrl+'add/', data);
@@ -19,7 +19,7 @@ export class UsersService {
     return this.http.put(baseUrl+'update/'+id, data);
   }
   delete(id:any) {
-    return this.http.delete(baseUrl+'/delete/'+id);
+    return this.http.delete(baseUrl+'delete/'+id);
   }
   deleteAll() {
     return this.http.delete(baseUrl+'delete/');

@@ -1,17 +1,17 @@
-<div class="list row">
+<!--<div class="list row">
     <div class="col-md-8">
       <div class="input-group mb-3">
         <input
           type="text"
           class="form-control"
-          placeholder="Search by name"
+          placeholder="Search"
           [(ngModel)]="name"
         />
         <div class="input-group-append">
           <button
             class="btn btn-outline-secondary"
             type="button"
-            (click)="searchName()"
+            (click)="searchUsers(name)"
           >
             Search
           </button>
@@ -23,11 +23,11 @@
       <ul class="list-group">
         <li
           class="list-group-item"
-          *ngFor="let tutorial of users; let i = index"
+          *ngFor="let user of users; let i = index"
           [class.active]="i == currentIndex"
-          (click)="setActiveUser(tutorial, i)"
+          (click)="setActiveUser(user, i)"
         >
-          {{ tutorial.name }}
+          {{ user.name }}
         </li>
       </ul>
       <button class="m-3 btn btn-sm btn-danger" (click)="removeAllUsers()">
@@ -54,4 +54,42 @@
         <p>Please click on a User...</p>
       </div>
     </div>
-  </div>
+  </div>-->
+  <input
+          type="search"
+          class="form-control"
+          placeholder="Search"
+          [(ngModel)]="name"
+        style="margin-left:22%; width:590px;"/>
+        <div class="input-group-append">
+          <button
+            class="btn btn-outline-secondary"
+            type="button"
+            (click)="searchUsers(name)" style="color:white; background-color:rgb(125, 24, 226); margin-left:75%; margin-top:-4%; width:auto; "
+          >
+   Search
+          </button>
+        </div>
+  <div class="col-sm-7">
+    
+  <table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Name</th>						
+            <th>Edit</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let user of users;let i=index">
+            <td>{{user.id}}</td>
+            <td>{{user.name}}</td>
+            <td><button [class.active]="i == currentIndex"
+              (click)="setActiveUser(user, i)"  data-toggle="modal" data-target="#modall"><i class="fa fa-regular fa-pencil"></i></button></td>
+           
+                
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    

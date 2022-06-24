@@ -1,8 +1,9 @@
 <div *ngIf="currentUser" class="edit-form">
-    <h4>User Management</h4>
+    
     <form>
+     
       <div class="form-group">
-        <label for="name">name</label>
+        <label for="name">Name</label>
         <input
           type="text"
           class="form-control"
@@ -12,7 +13,7 @@
         />
       </div>
       <div class="form-group">
-        <label for="email">email</label>
+        <label for="email">Email</label>
         <input
           type="text"
           class="form-control"
@@ -21,21 +22,40 @@
           name="email"
         />
       </div>
+      <div class="form-group">
+        <label for="email">Role</label>
+       <!--<input
+          type="text"
+          class="form-control"
+          id="role"
+          [(ngModel)]="currentUser.role"
+          name="role"
+        />-->
+        <select  class="form-control validate" id="role" [(ngModel)]="currentUser.role" name="role">
+          <option [value]="'ROLE_ADMIN'">ADMIN</option>
+          <option [value]="'ROLE_USER'">USER</option>
+          <option [value]="'ROLE_MODERATOR'">MODERATOR</option>
+         
+        </select>
+      </div>
+      <button *ngIf="currentUser.role == 'ROLE_ADMIN'" class="badge badge-danger mr-2" (click)="deleteTutorial()">
+        Delete
+      </button>
+      <button type="submit" class="badge badge-success" (click)="updateTutorial()">
+        Update
+      </button>
      
     </form>
     
    
-    <button class="badge badge-danger mr-2" (click)="deleteTutorial()">
-      Delete
-    </button>
-    <button type="submit" class="badge badge-success" (click)="updateTutorial()">
-      Update
-    </button>
-    <p>{{ message }}</p>
+  
+    <p style="margin-left:35%; color:green;width:400px;height:50px; font-size:20px; display:block; margin:1px solid red; background-color: rgb(223, 240, 234);">{{ message }}</p>
   </div>
   <div *ngIf="!currentUser">
     <br />
     <p>Cannot access this User...</p>
   </div>
+
   
+ 
   

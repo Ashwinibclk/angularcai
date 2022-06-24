@@ -9,7 +9,8 @@ import { User } from '../list-users/user';
   styleUrls: ['./user-details.component.css']
 })
 export class UserDetailsComponent implements OnInit {
-
+  show:boolean=false
+  pageapp:boolean=false;
   currentUser : any;
   message = '';
   constructor(
@@ -17,6 +18,7 @@ export class UserDetailsComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router) { }
   ngOnInit() {
+    this.pageapp=false;
     this.message = '';
     this.getuser(this.route.snapshot.paramMap.get('id'));
   }
@@ -52,6 +54,7 @@ export class UserDetailsComponent implements OnInit {
       .subscribe(
         response => {
           console.log(response);
+          this.show=true;
           this.message = 'The user was updated successfully!';
         },
         error => {
@@ -63,7 +66,9 @@ export class UserDetailsComponent implements OnInit {
           .subscribe(
             response => {
               console.log(response);
-              this.router.navigate(['/users']);
+              alert("Deleted!!!")
+              
+              this.router.navigate(['/']);
             },
             error => {
               console.log(error);
